@@ -1,0 +1,8 @@
+# Banner que se muestra a la hora de cargar el spring
+#
+spring:
+  banner:
+    location: classpath:banner.txt
+    
+server:
+  port: 8081 # Server HTTP port.
