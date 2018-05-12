@@ -6,3 +6,6 @@ spring:
     
 server:
   port: 8081 # Server HTTP port.
+  error:
+    whitelabel:
+      enabled:  true  #para mostrar o ocultar la pagina de error apachetomcat.   
