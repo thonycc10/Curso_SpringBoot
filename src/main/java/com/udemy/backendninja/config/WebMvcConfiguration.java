@@ -10,7 +10,7 @@ import com.udemy.backendninja.component.RequestTimeInterceptor;
 
 @Configuration
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter{
-	// el component de time se configura aqui requestTimeInterceptor
+	// el scomponent de time se configura aqui requestTimeInterceptor
 	
 	@Autowired
 	@Qualifier("requestTimeInterceptor")
