@@ -6,8 +6,13 @@
 </head>
 <body>
 	<form action="#" th:action="@{/example3/addPerson}" th:object="${person}" method="post">
+		
 		<p>Name: <input type="text" th:field="*{name}"/></p>
+		<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name has erros</p>
+		
 		<p>Age: <input type="number" th:field="*{age}"/></p>
+		<p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age has erros</p>
+		
 		<p><input type="submit" value="ENVIAR"/></p>
 	</form>
 </body>

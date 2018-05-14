@@ -1,9 +1,12 @@
 package com.udemy.backendninja.controller;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,13 +48,20 @@ public class Examen3Controller {
 		return FORM_VIEW;
 	}
 	
-	@PostMapping("/addPerson")
-	public ModelAndView addperson(@ModelAttribute("person") Person person) {
-		LOGGER.info("METHOD: 'addPerson' -- PARAMS: '" + person +"'");
+	@PostMapping("/addPerson") // validacion
+	public ModelAndView addperson(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult) {
 		ModelAndView mav = new ModelAndView(RESULT_VIEW);
+		if(bindingResult.hasErrors()) {
+			mav.setViewName(FORM_VIEW);
+		}else {
+//			cambios plantilla
+			mav.setViewName(RESULT_VIEW);
+			mav.addObject("person", person);
+		}
+//		LOGGER.info("METHOD: 'addPerson' -- PARAMS: '" + person +"'");
+	
 		/*capturamos lo que nos enviara de la plantilla example3*/
-		mav.addObject("person", person);
-		LOGGER.info("TEMPLATE: '" + RESULT_VIEW + "' -- DATA: '" + person + "'");
+//		LOGGER.info("TEMPLATE: '" + RESULT_VIEW + "' -- DATA: '" + person + "'");
 		return mav;
 	}
 }
