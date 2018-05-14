@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Courses</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Descripcion</th>
+				<th>Precio</th>
+				<th>Horas</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="course : ${courses}" >
+			<th><span th:text="${course.name}">Name</span></th>
+			<th><span th:text="${course.description}">Name</span></th>
+			<th><span th:text="${course.price}">Name</span></th>
+			<th><span th:text="${course.hours}">Name</span></th>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
