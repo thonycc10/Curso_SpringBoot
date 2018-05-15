@@ -26,5 +26,12 @@ public class UserCredencial {
 		this.password = password;
 	}
 	
+	@Override
+	public String toString() {
+		return "UserCredencial [username=" + username + ", password=" + password + "]";
+	}
+	
+	
+	
 	
 }
