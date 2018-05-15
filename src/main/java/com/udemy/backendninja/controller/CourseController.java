@@ -26,6 +26,7 @@ public class CourseController {
 	@Qualifier("courseServiceImpl")
 	private CourseService courseService;
 	
+	// Ojo los controllers solo deben trabajar con modelos no es recomendable que usen entitys
 	@GetMapping("/listcourses")
 	public ModelAndView listAllCourses() {
 		LOG.info("Call: " + "listAllCourses()");
