@@ -22,6 +22,12 @@
 			<th><span th:text="${course.hours}">Name</span></th>
 			</tr>
 		</tbody>
+		<tfoot>
+			<tr>
+				<th><button type="submit" name="action" value="delete">Delete</button></th>
+				<th><button type="submit" name="action" value="update">Update</button></th>
+			</tr>
+		</tfoot>
 	</table>
 	
 	<form action="#" th:action="@{/course/addcourse}" th:object="${course}" method="post">
@@ -29,7 +35,7 @@
 		<p>Descripcion: <input type="text" th:field="*{description}"/></p>
 		<p>Precio: <input type="text" th:field="*{price}"/></p>
 		<p>Horas: <input type="text" th:field="*{hours}"/></p>
-		<p>Horas: <input type="submit" value="Enviar"/></p>
+		<p><input type="submit" value="Enviar"/></p>
 	</form>
 </body>
 </html>
