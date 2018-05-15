@@ -18,12 +18,14 @@
 
     <div class="container">
 
-      <form class="form-signin">
+      <form class="form-signin" action="#" th:action="@{/logincheck}" th:object="${userCredencial}" method="post">
         <h2 class="form-signin-heading">Sign in</h2>
-        <label for="inputEmail" class="sr-only">Username</label>
-        <input type="text" id="inputUsername" class="form-control" placeholder="Username"/>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password"/>
+        <label for="inputEmail" class="sr-only">Usuario</label>
+        <input type="text" id="inputUsername" class="form-control" placeholder="Username" th:field="*{username}"/>
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" th:field="*{password}"/>
+        <div th:if="${error != null }" class="alert alert-danger" role="alert">Invalid username or password</div>
+       <div th:if="${logout != null }" class="alert alert-info" role="alert">Logout successfully!</div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">
         	<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Sign in
         </button>
