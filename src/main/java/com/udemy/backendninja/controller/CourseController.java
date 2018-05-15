@@ -30,6 +30,7 @@ public class CourseController {
 	public ModelAndView listAllCourses() {
 		LOG.info("Call: " + "listAllCourses()");
 		ModelAndView mav = new ModelAndView(COURSE_VIEW);
+		mav.addObject("course", new Course()); // creamos un objeto vacio para que thymeleaf trabaje en el formulario
 		mav.addObject("courses", courseService.listAllCourses());
 		return mav;
 	}
