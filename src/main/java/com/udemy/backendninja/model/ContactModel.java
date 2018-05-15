@@ -1,7 +1,6 @@
 package com.udemy.backendninja.model;
 // se usa para interactual con el controller para seguridad
 
-import javax.persistence.Column;
 
 public class ContactModel {
 
