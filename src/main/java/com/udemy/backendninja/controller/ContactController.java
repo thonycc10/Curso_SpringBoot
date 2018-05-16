@@ -35,8 +35,10 @@ public class ContactController {
 	}
 	
 	@PostMapping("/addcontacts")
-	public String addContacts(@ModelAttribute(name= "contactModel") ContactModel contactModel) {
+	public String addContacts(@ModelAttribute(name= "contactModel") ContactModel contactModel,
+			Model model) {
 		LOG.info("Call: addContacts() -- Con PARAMS : " + contactModel.toString());
+		model.addAttribute("result", 1);
 		return ViewConstant.CONTACTS;
 	}
 	
