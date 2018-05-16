@@ -2,6 +2,8 @@ package com.udemy.backendninja.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.udemy.backendninja.constant.ViewConstant;
 import com.udemy.backendninja.model.ContactModel;
+import com.udemy.backendninja.service.ContactService;
 
 @Controller
 @RequestMapping("/contact")
@@ -20,6 +23,9 @@ public class ContactController {
 //	public String redirectContac() {
 //		return "redirect:/contact/contactform";
 //	}
+	@Autowired
+	@Qualifier("contactServiceImpl")
+	private ContactService contactService;
 	
 	private static final Log LOG = LogFactory.getLog(ContactController.class);
 	
@@ -38,7 +44,11 @@ public class ContactController {
 	public String addContacts(@ModelAttribute(name= "contactModel") ContactModel contactModel,
 			Model model) {
 		LOG.info("Call: addContacts() -- Con PARAMS : " + contactModel.toString());
-		model.addAttribute("result", 1);
+		if(null != contactService.addContact(contactModel)) {
+		model.addAttribute("result", 1); // utiliza para el alert
+		}else {
+		model.addAttribute("result", 0); // utiliza para el alert
+		}
 		return ViewConstant.CONTACTS;
 	}
 	

@@ -74,6 +74,7 @@
 		
 		
 		<div th:if="${result == 1 }" class="alert alert-success" role="alert">Register successfully!</div>
+		<div th:if="${result == 0 }" class="alert alert-danger" role="alert">Register error!</div>
 		
 		<a href="#" th:href="@{/contact/contactform}">
 		<button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add contact</button>
