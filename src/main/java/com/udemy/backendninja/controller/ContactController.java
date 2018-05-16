@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.udemy.backendninja.constant.ViewConstant;
 import com.udemy.backendninja.model.ContactModel;
@@ -31,7 +32,7 @@ public class ContactController {
 	
 	@GetMapping("/cancel")
 	public String cancel() {
-		return ViewConstant.CONTACTS;
+		return "redirect:/contact/listcontacts";
 	}
 	
 	@GetMapping("/contactform")
@@ -49,7 +50,13 @@ public class ContactController {
 		}else {
 		model.addAttribute("result", 0); // utiliza para el alert
 		}
-		return ViewConstant.CONTACTS;
+		return "redirect:/contact/listcontacts";
 	}
 	
+	@GetMapping("/listcontacts")
+	public ModelAndView listContacts() {
+		ModelAndView modelAndView = new ModelAndView(ViewConstant.CONTACTS);
+		modelAndView.addObject("contacts", contactService.listAllContacts());
+		return modelAndView;
+	}
 }
