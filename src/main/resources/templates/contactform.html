@@ -19,14 +19,14 @@
 		<div class="container">
 			<h1>Contact Form</h1>
 			<br/>
-			<form action="#">
-				First Name: <input type="text" class="form-control"></input>
+			<form action="#" th:action="@{/contact/addcontacts}" th:object="${contactModel}" method="post">
+				First Name: <input type="text" class="form-control" th:field="*{firstname}"></input>
 				<br/>
-				Last Name: <input type="text" class="form-control"></input>
+				Last Name: <input type="text" class="form-control" th:field="*{lastname}"></input>
 				<br/>
-				Telephone: <input type="text" class="form-control"></input>
+				Telephone: <input type="text" class="form-control" th:field="*{telephone}"></input>
 				<br/>
-				City: <input type="text" class="form-control"></input>
+				City: <input type="text" class="form-control" th:field="*{city}"></input>
 				<br/>
 				<br/>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
