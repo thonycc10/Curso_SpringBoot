@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.udemy.backendninja.constant.ViewConstant;
+import com.udemy.backendninja.entity.Contact;
 import com.udemy.backendninja.model.ContactModel;
 import com.udemy.backendninja.service.ContactService;
 
@@ -37,8 +38,14 @@ public class ContactController {
 	}
 	
 	@GetMapping("/contactform")
-	public String redirectContac(Model model) {
-		model.addAttribute("contactModel", new ContactModel());
+	public String redirectContac(@RequestParam(name="id", required=false) int id, 
+			Model model) { // false porqe si viene vacio por el crear contact
+		// creamos el contac con la ruta id obtenida service
+		ContactModel contact = new ContactModel();
+		if( id != 0) { // a tener listo esta logica ir a addContactsController - se crea un input=id
+		contact = contactService.findContactByIdModel(id);
+		}
+		model.addAttribute("contactModel", contact);
 		return ViewConstant.CONTACT_FORM;
 	}
 	
