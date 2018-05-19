@@ -31,3 +31,11 @@
 ![alt text](https://github.com/thonycc10/Curso_SpringBoot/blob/master/src/main/resources/static/imgs/3.JPG)
 
 - Eliminar : 	
+
+
+## Spring security
+
+<dependency>
+	<groupId>org.springframework.boot</groudId>
+	<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
