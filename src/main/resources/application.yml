@@ -15,8 +15,9 @@ spring:
   datasource: # Permite manejo con la base de datos
     url:  jdbc:mysql://localhost:3306/spring_ninja?useSSL=false
     username: root
+#    password: mysql
     password: root
- 
+
 server:
   port: 8081 # Server HTTP port.
   error:
