@@ -12,6 +12,8 @@ spring:
       #ddl-auto: create-drop 
       ddl-auto: update
       naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy # Como se realizan las consultas
+  thymeleaf:
+    cache: false
   datasource: # Permite manejo con la base de datos
     url:  jdbc:mysql://localhost:3306/spring_ninja?useSSL=false
     username: root
@@ -22,4 +24,5 @@ server:
   port: 8081 # Server HTTP port.
   error:
     whitelabel:
-      enabled:  true  #para mostrar o ocultar la pagina de error apachetomcat.   
+      enabled:  true  #para mostrar o ocultar la pagina de error apachetomcat.
+        
