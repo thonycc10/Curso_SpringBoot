@@ -4,6 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import com.udemy.backendninja.model.ContactModel;
 import com.udemy.backendninja.service.ContactService;
 
 @Controller
+//	@PreAuthorize("permitAll()") tambien a nivel de clase puedes añadir esta funcion, tambin funcionan on los services(metodo o class)
 @RequestMapping("/contact")
 public class ContactController {
 
@@ -36,7 +38,10 @@ public class ContactController {
 	public String cancel() {
 		return "redirect:/contact/listcontacts";
 	}
-	
+
+	// puedes usar el
+//	@PreAuthorize("permitAll()") tiene acceso todos los usuarios
+	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")  // ROLE_USER es por defecto de spring security - si cambias no mostrara la vista
 	@GetMapping("/contactform")
 	public String redirectContac(@RequestParam(name="id", required=false) int id, 
 			Model model) { // false porqe si viene vacio por el crear contact
