@@ -5,6 +5,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,6 +71,10 @@ public class ContactController {
 	@GetMapping("/listcontacts")
 	public ModelAndView listContacts() {
 		ModelAndView modelAndView = new ModelAndView(ViewConstant.CONTACTS);
+
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); // getPrincipañ usuario actual de la sesion
+
+		modelAndView.addObject("username", user.getUsername()); // obtenemos el usuario logeado
 		modelAndView.addObject("contacts", contactService.listAllContacts());
 		return modelAndView;
 	}
